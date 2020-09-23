@@ -1,0 +1,24 @@
+commune_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Commune:index" }
+    methods:  GET
+
+commune_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Commune:show" }
+    methods:  GET
+
+commune_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Commune:new" }
+    methods:  [GET, POST]
+
+commune_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Commune:edit" }
+    methods:  [GET, POST]
+
+commune_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Commune:delete" }
+    methods:  DELETE

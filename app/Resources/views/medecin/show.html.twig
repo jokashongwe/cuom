@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col-md-8 col-md-offset-2 ">
+    <div class="panel">
+        <div class="panel-body">
+            <table class="table table-striped">
+        <tbody>
+        <tr>
+            <th></th>
+            <td>{% if medecin.photo %}
+                    <img src="{{ asset('uploads/photos_medecins/'~medecin.photo) }}" class="img-size-200 img-rounded mb-20" alt="Voir la Photo" />
+                {% else %}
+                    <span class="fa fa-3x "><i class="fa fa-5x fa-user"> </i></span><br>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('medecin_edit', { 'id': medecin.id }) }}"  class="btn btn-warning">Modifier</a>
+                    {% endif %}
+                {% endif %}</td>
+        </tr>
+            <tr>
+                <th>CNOM</th>
+                <td>{{ medecin.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ medecin.nom }}</td>
+            </tr>
+            <tr>
+                <th>Postnom</th>
+                <td>{{ medecin.postnom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ medecin.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Annee</th>
+                <td>{{ medecin.annee }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ medecin.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ medecin.email }}</td>
+            </tr>
+        <tr>
+            <th>Universite</th>
+            <td>{{ medecin.universite }}</td>
+        </tr>
+        <tr>
+            <th>Specialites</th>
+            <td>
+                <ul class="list-inline list-group">
+                {%  for spec in medecin.specialites %}
+            <li class="list-group-item-success">{{ spec.specialite }}</li>
+
+                {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Hopital</th>
+            <td>{{ medecin.hopital }}</td>
+        </tr>
+        <tr>
+            <th>Hopital</th>
+            <td>{{ medecin.commune }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+            <ul class="list-unstyled list-inline">
+                <li>
+                    <a href="{{ path('medecin_index') }}" class="btn btn-info">Listes des medecins</a>
+                </li>
+                <li>
+                    <a href="{{ path('medecin_edit', { 'id': medecin.id }) }}" class="btn btn-warning">Modifier</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Supprimer" class="btn btn-danger">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

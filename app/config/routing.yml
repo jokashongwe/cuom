@@ -1,0 +1,24 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+app_commune:
+    resource: "@AppBundle/Resources/config/routing/commune.yml"
+    prefix:   /commune
+app_hopital:
+    resource: "@AppBundle/Resources/config/routing/hopital.yml"
+    prefix:   /hopital
+
+app_universite:
+    resource: "@AppBundle/Resources/config/routing/universite.yml"
+    prefix:   /universite
+app_specialite:
+    resource: "@AppBundle/Resources/config/routing/specialite.yml"
+    prefix:   /specialite
+
+app_medecin:
+    resource: "@AppBundle/Resources/config/routing/medecin.yml"
+    prefix:   /medecin
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

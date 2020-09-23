@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="col-md-offset-3 col-md-6 mt-50 pt-50">
+        <div class="panel">
+            <div class="panel-body p-30">
+                <div class="error-box">
+                    {% if status_code == 404 %}
+                    <i class="fa fa-exclamation-circle error-icon"></i>
+                    <h1 class="error-title">{{ status_code }}</h1>
+                    <p class="sub-title">{{ status_text }}!</p>
+                    <p class="text-muted">Cette Page est introuvable ou enregistrement inexistant.</p>
+                    <a href={{ path('cs_enr_homepage') }}" class="btn btn-primary btn-lg btn-rounded">Page d'accueil</a>
+                    {% elseif status_code == 403 %}
+
+                        <i class="fa fa-exclamation-circle error-icon"></i>
+                        <h1 class="error-title">{{ status_code }}</h1>
+                        <p class="sub-title">{{ status_text }}!</p>
+                        <p class="text-muted">Vous n'avez pas accès et les autorisations nécessaires pour ce profil.</p>
+                        {% elseif status_code == 500 %}
+
+                        <i class="fa fa-exclamation-circle error-icon"></i>
+                        <h1 class="error-title">{{ status_code }}</h1>
+                        <p class="sub-title">{{ status_text }}!</p>
+                        <p class="text-muted">Vous ne disposez pas suffisamment de droits ou que le profil avec lequel vous etes connecté ne correspond pas .</p>
+                            {% else %}
+
+                        <i class="fa fa-exclamation-circle error-icon"></i>
+                        <h1 class="error-title">{{ status_code }}</h1>
+                        <p class="sub-title">{{ status_text }}!</p>
+                        <p class="text-muted">Problème inconnu .</p>
+                                
+                                {% endif %}
+                        
+                        </div>
+                <!-- /.error-box -->
+            </div>
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-md-offset-3 col-md-6 -->
+{% endblock %}

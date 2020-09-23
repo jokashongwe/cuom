@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col-md-8 col-md-offset-2 ">
+    <div class="panel">
+        <div class="panel-body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hopital in hopitals %}
+            <tr>
+                <td>{{ hopital.nom }}</td>
+                <td>{{ hopital.adresse }}</td>
+                <td>
+                    <ul class="list-unstyled list-inline">
+                        <li>
+                            <a href="{{ path('hopital_show', { 'id': hopital.id }) }}" class="btn btn-info">afficher</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('hopital_edit', { 'id': hopital.id }) }}" class="btn btn-warning">modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled list-inline">
+        <li>
+            <a href="{{ path('hopital_new') }}" class="btn btn-success">Nouvel Hopital</a>
+        </li>
+    </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

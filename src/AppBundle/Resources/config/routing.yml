@@ -1,0 +1,4 @@
+app_hopital:
+    resource: "@AppBundle/Resources/config/routing/hopital.yml"
+    prefix:   /hopital
+

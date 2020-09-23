@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col-md-10 col-md-offset-1 ">
+    <div class="panel">
+        <div class="panel-body">
+            <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>CNOM</th>
+                <th>Nom</th>
+                <th>Postnom</th>
+                <th>Prenom</th>
+                <th>Annee</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medecin in medecins %}
+            <tr>
+                <td><a href="{{ path('medecin_show', { 'id': medecin.id }) }}">{{ medecin.id }}</a></td>
+                <td>{{ medecin.nom }}</td>
+                <td>{{ medecin.postnom }}</td>
+                <td>{{ medecin.prenom }}</td>
+                <td>{{ medecin.annee }}</td>
+                <td>{{ medecin.telephone }}</td>
+                <td>{{ medecin.email }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('medecin_show', { 'id': medecin.id }) }}" class="btn btn-info">afficher</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('medecin_edit', { 'id': medecin.id }) }}" class="btn btn-warning">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('medecin_new') }}" class="btn btn-success">Nouveau medecin</a>
+        </li>
+    </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function () {
+           $('.table').DataTable({
+               language:{ "url":"https://cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"}
+           });
+        });
+    </script>
+{% endblock %}

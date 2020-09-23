@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col-md-8 col-md-offset-2 ">
+    <div class="panel">
+        <div class="panel-body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Commune</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commune in communes %}
+            <tr>
+                <td>{{ commune.commune }}</td>
+                <td>
+                    <ul class="list-unstyled list-inline">
+                        <li>
+                            <a href="{{ path('commune_show', { 'id': commune.id }) }}"  class="btn btn-info">Afficher</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('commune_edit', { 'id': commune.id }) }}"  class="btn btn-warning">modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('commune_new') }}">Create a new commune</a>
+        </li>
+    </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+  <div class="col-md-12 ">
+    <div class="panel panel-success mt-50">
+      <div class="panel-body">
+        <div class="col-md-10">
+        <form class="" action="{{ path('medecin_recherche') }}" method="post">
+          <input type="search" name="recherche" autocomplete="off" class="form-control col-md-offset-1" id="motcle" placeholder="Rechercher un médécin">
+            <ul class="list-unstyled col-md-offset-1" id="mesitems">
+
+            </ul>
+          <button class="btn btn-success col-md-offset-1" type="submit">Rechercher</button>
+        </form>
+
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+
+            <div class="panel">
+              <div class="panel-heading">
+                <div class="panel-title text-center">
+                     <h5>UNIVERSITES</h5>
+                 </div>
+               </div>
+             <div class="panel-body">
+                 <ul class="list-unstyled list-group">
+                     {% for commune in universites %}
+                            {% if commune.medecins.count>0 %}
+                         <li class="list-group-item">{{ commune.nom }}<span class="badge badge-success pull-right">{{ commune.medecins.count }}</span> </li>
+                     {% endif %}
+                     {% endfor %}
+                 </ul>
+                           </div>
+                           </div>
+
+          </div>
+          <div class="col-md-3">
+              <div class="panel">
+                  <div class="panel-heading">
+                      <div class="panel-title text-center">
+                          <h5>SPECIALITE</h5>
+                      </div>
+                  </div>
+                  <div class="panel-body">
+                              <ul class="list-unstyled list-group">
+                              {% for commune in specialites %}
+
+                                  {% if commune.medecin.count>0 %}
+                                  <li class="list-group-item">{{ commune.specialite}}<span class="badge badge-success pull-right">{{ commune.medecin.count }}</span> </li>
+                              {% endif %}
+                                  {% endfor %}
+                                  </ul>
+
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="panel">
+                  <div class="panel-heading">
+                      <div class="panel-title  text-center">
+                          <h5>COMMUNE</h5>
+                      </div>
+                  </div>
+                  <div class="panel-body">
+                              <ul class="list-unstyled list-group">
+                                  {% for commune in communes %}
+                                  <li class="list-group-item">{{ commune }} <span class="badge badge-success pull-right"></span> </li>
+
+                                  {% endfor %}
+                                </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="panel">
+                  <div class="panel-heading">
+                      <div class="panel-title text-center">
+                          <h5>HOPITAL</h5>
+                      </div>
+                  </div>
+                  <div class="panel-body">
+                      <form action="#">
+                          <div class="form-group">
+                              <label for="js-states"></label>
+                              <ul class="list-unstyled list-group">
+
+                                  {% for commune in hopitaux %}
+
+                                  {% if commune.medecins.count>0 %}
+                                      <li class="list-group-item">{{ commune.nom }}<span class="badge badge-success pull-right">{{ commune.medecins.count }}</span> </li>
+                                  {% endif  %}
+                                  {% endfor %}
+                              </ul>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+{% block javascripts %}
+  {{ parent() }}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+  <script src="{{ asset('js/select2/select2.min.js') }}"></script>
+    <script>
+        /**
+         * Created by ramseytiger on 12/21/16.
+         */
+
+        $(function () {
+            $(".loading").hide();
+
+            var $inp=$("#motcle");
+            $inp.focus();
+            //var txtclient=$('input[name=recherche]');
+            $inp.keyup(function(event){
+                $('#mesitems').show().html('');
+                $(".loading").show();
+                var motcle = $inp.val();
+                var DONNEE = 'recherche=' + motcle;
+                $.ajax({
+                    type: "POST",
+                    dataType:'json',
+                    url: Routing.generate('medecin_recherche'),
+                    data: DONNEE,
+                    cache: false,
+                    minLength: 3,
+                    beforeSend: function () {
+                        $('#mesitems').find('li').remove();
+                    },
+                    success: function(data) {
+
+
+                        $.each(data.items, function(index,value) {
+                            //$("#ott").text(value.libelle+'<br/>'+value.Prix);
+                            var nophoto="{{ asset('uploads/photos_medecins/') }}"+value.photo+"";
+                            var lien=Routing.generate('medecin_afficher',{ id:value.id });
+                            $('#mesitems').prepend(' <a href='+lien+'><li><div class="panel panel-success"><div class="panel-body"><div class="col-md-4"><img src='+nophoto +' width="100px" height="100px"/></div><div class="col-md-8"></div><ul class="list-unstyled"><li><strong>Nom</strong> : '+value.nom+' '+value.postnom+' '+value.prenom+'</li> <li><strong>Specialités :</strong> Non Specifie</li> <li><strong>Hopital :</strong> '+value.hopital+'</li> <li><strong>Annee :</strong> '+value.annee+'</li> </ul> </div> </div> </div></li></a>');
+
+                            //$('#resultats').html('<div>'+value.libelle+'</div>');
+                            //alert(value.libelle);
+                        });
+
+                        $(".loading").hide();
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>
+  <script>
+    $(function($) {
+      $(".js-states").select2();
+      $(".js-states-limit").select2({
+        maximumSelectionLength: 2
+      });
+      $(".js-states-hide").select2({
+        minimumResultsForSearch: Infinity
+      });
+    });
+  </script>
+{% endblock %}
