@@ -2,11 +2,15 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Medecin;
+use AppBundle\Entity\Specialite;
+use AppBundle\Repository\MedecinRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-
 class DefaultController extends Controller
 {
     /**
@@ -15,58 +19,58 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
 
-        $em=$this->getDoctrine()->getManager();
-        $universites=$em->getRepository('AppBundle:Universite')->findAll();
-        $hopitaux=$em->getRepository('AppBundle:Hopital')->findAll();
-        $specialites=$em->getRepository('AppBundle:Specialite')->findAll();
-        $communes=$em->getRepository('AppBundle:Commune')->findAll();
-        $statuts=$em->getRepository('AppBundle:Statut')->findAll();
+        $em = $this->getDoctrine()->getManager();
+        $universites = $em->getRepository('AppBundle:Universite')->findAll();
+        $hopitaux = $em->getRepository('AppBundle:Hopital')->findAll();
+        $specialites = $em->getRepository('AppBundle:Specialite')->findAll();
+        $communes = $em->getRepository('AppBundle:Commune')->findAll();
+        $statuts = $em->getRepository('AppBundle:Statut')->findAll();
         // replace this example code with whatever you need
         return $this->render('default/search.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        'universites'=>$universites,'hopitaux'=>$hopitaux, 'specialites'=>$specialites, 'communes'=>$communes, 'statuts' => $statuts]);
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
+            'universites' => $universites, 'hopitaux' => $hopitaux, 'specialites' => $specialites, 'communes' => $communes, 'statuts' => $statuts]);
     }
-
 
     public function rechercheTraitementAction(Request $request)
     {
         //$form = $this->createForm(new RechercheType());
-        $em = $this->getDoctrine()->getManager();
+       try{
+           $em = $this->getDoctrine()->getManager();
+           $repos = $em->getRepository(Medecin::class);
+           $content = json_decode($request->getContent(), true);
 
-        if ($request->isXmlHttpRequest() && $request->get('recherche')!= null)
-        {
+           $contentData = json_decode($content['recherche']);
+           $result = array();
+           foreach ($contentData as $item)
+           {
+               if($item->value == '') continue;
+               if($item->name != 'specialite') {
+                   $dbResult = $this->parseMedecin($repos->recherchePar($item->name, $item->value));
+               } else {
+                   $dbResult = $em->getRepository(Specialite::class)->find($item->value)->getMedecin()->toArray();
+               }
+               if(count($result) == 0) {
+                   $result = array_merge($result, $dbResult);
+               } else {
+                   $result = array_uintersect($dbResult, $result, function($a, $b) {
+                       return $a == $b;
+                   });
+               }
+           }
+           $response = new JsonResponse();
+           return $response->setData(array_unique($result, SORT_REGULAR));
+       } catch (\Exception $e) {
+           $response = new JsonResponse();
+           return $response->setData($e->getMessage());
+       }
+    }
 
-            $motcle=$request->get('recherche');
-
-
-            $articles = $articles = $em->getRepository('AppBundle:Medecin')->recherche($motcle);
-
-
-        } else {
-            //$articles=$em->getRepository('toonaShopBundle:Article')->findAll();
-            $motcle=$request->get('recherche');
-
-            $articles = $em->getRepository('AppBundle:Medecin')->recherche($motcle);
-
-
-            //return $this->redirect($this->generateUrl('liste_medecin'));
-            // $recherche=$request->get('ts_recherche_recherche');
-
-            //$em = $this->getDoctrine()->getManager();
-            //$articles = $em->getRepository('toonaShopBundle:Article')->findByNom($recherche);
-            return $this->render('default/liste.html.twig', array('medecins' => $articles));
-        }
-
-        $items=array();
-        foreach ($articles as $item){
+    public function parseMedecin($data) {
+        $items = array();
+        foreach ($data as $item){
             $items[]=array('id'=>$item->getId(),'nom'=>$item->getNom(),'photo'=>$item->getPhoto(),'postnom'=>$item->getPostnom(),'prenom'=>$item->getPrenom(),'hopital'=>$item->getHopital()->getNom(),'annee'=>$item->getAnnee());
         }
-
-        $response = new JsonResponse();
-        return $response->setData(array('items' => $items));
-        //return $this->get('templating')->renderResponse('toonaShopBundle:Store:pos.html.twig', array('items' => $articles));
-        //return new JsonResponse(array('items'=>$articles))->headers->set('Content-Type', 'application/json');;
-        //return $this->redirect($this->generateUrl('ts_pos'));
+        return $items;
     }
 
     /**

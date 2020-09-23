@@ -21,4 +21,14 @@ class MedecinRepository extends \Doctrine\ORM\EntityRepository
         return $tr->getQuery()->getResult();
     }
 
+    public function recherchePar($name, $value) {
+        $tr=$this->createQueryBuilder('a');
+        $tr->select('a')
+            ->join("a.$name", 's')
+            ->where("a.nom LIKE :motcle OR a.postnom LIKE :motcle OR s.id LIKE :motcle")
+            ->setParameter('motcle','%'.$value.'%')
+            ->orderBy('a.nom', 'ASC');
+        return $tr->getQuery()->getResult();
+    }
+
 }

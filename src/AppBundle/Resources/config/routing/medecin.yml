@@ -10,7 +10,7 @@ liste_medecin:
 medecin_recherche:
     path:     /medecin-recherche
     defaults: { _controller: "AppBundle:Default:rechercheTraitement" }
-    methods:  [GET, POST]
+    methods:  [POST]
     options:
         expose: true
 

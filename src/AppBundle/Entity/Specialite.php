@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -91,7 +92,7 @@ class Specialite
     /**
      * Get medecin
      *
-     * @return \AppBundle\Entity\Medecin
+     * @return ArrayCollection
      */
     public function getMedecin()
     {
@@ -102,7 +103,7 @@ class Specialite
      */
     public function __construct()
     {
-        $this->medecin = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->medecin = new ArrayCollection();
     }
 
     /**

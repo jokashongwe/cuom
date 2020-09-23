@@ -30,7 +30,7 @@ class Commune
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="Medecin", mappedBy="commune")
+     * @ORM\OneToMany(targetEntity="Medecin", mappedBy="Commune")
      */
     private $medecins;
 

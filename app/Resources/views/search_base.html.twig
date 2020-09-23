@@ -7,11 +7,22 @@
     <meta name="author" content="colorlib.com">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet" />
     <title>CUOM Annuaire</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <link href="{{ asset('css/search.css') }}" rel="stylesheet" />
 </head>
 <body>
 {% block body %}
 
+{% endblock %}
+<script src="{{ asset('js/jquery/jquery-2.2.4.min.js') }}"></script>
+<script src="{{ asset('js/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/pace/pace.min.js') }}"></script>
+<script src="{{ asset('js/lobipanel/lobipanel.min.js') }}"></script>
+<script src="{{ asset('js/iscroll/iscroll.js') }}"></script>
+<script src="{{ asset('js/prism/prism.js') }}"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" ></script>
+{% block scripts %}
 {% endblock %}
 </body>
 </html>

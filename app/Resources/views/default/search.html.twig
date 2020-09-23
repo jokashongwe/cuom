@@ -2,14 +2,14 @@
 
 {% block body %}
     <div class="s009">
-        <form action="{{ path('medecin_recherche') }}" method="post">
+        <form id="form" action="{{ path('homepage') }}" method="post">
             <div class="inner-form">
                 <div>
                     <h1>Rechercher un médecin</h1>
                 </div>
                 <div class="basic-search">
                     <div class="input-field">
-                        <input id="search" type="text" placeholder="Identité du médecin"/>
+                        <input name="nom" type="text" placeholder="Identité du médecin"/>
                         <div class="icon-wrap">
                             <svg class="svg-inline--fa fa-search fa-w-16" fill="#ccc" aria-hidden="true"
                                  data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="input-field">
                             <div class="input-select">
-                                <select data-trigger="" name="choices-single-defaul">
+                                <select data-trigger="" name="specialite">
                                     <option placeholder="" value="">Spécialités</option>
                                     {% for spec in specialites %}
                                         <option value="{{ spec.id }}">{{ spec.specialite }}</option>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="input-field">
                             <div class="input-select">
-                                <select data-trigger="" name="choices-single-defaul">
+                                <select data-trigger="" name="hopital">
                                     <option placeholder="" value="">Institution</option>
                                     {% for hos in hopitaux %}
                                         <option value="{{ hos.id }}">{{ hos.nom }}</option>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="input-field">
                             <div class="input-select">
-                                <select data-trigger="" name="choices-single-defaul">
+                                <select data-trigger="" name="universite">
                                     <option placeholder="" value="">Université</option>
                                     {% for uni in universites %}
                                         <option value="{{ uni.id }}">{{ uni.nom }}</option>
@@ -56,7 +56,7 @@
                     <div class="row second">
                         <div class="input-field">
                             <div class="input-select">
-                                <select data-trigger="" name="choices-single-defaul">
+                                <select data-trigger="" name="statut">
                                     <option placeholder="" value="">Statut</option>
                                     {% for statut in statuts %}
                                         <option value="{{ statut.id }}">{{ statut.nom }}</option>
@@ -66,7 +66,7 @@
                         </div>
                         <div class="input-field">
                             <div class="input-select">
-                                <select data-trigger="" name="choices-single-defaul">
+                                <select data-trigger="">
                                     <option placeholder="" value="">Sexe</option>
                                     <option value="1">Homme</option>
                                     <option value="0">Femme</option>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="input-field">
                             <div class="input-select">
-                                <select data-trigger="" name="choices-single-defaul">
+                                <select data-trigger="" name="Commune">
                                     <option placeholder="" value="">Commune</option>
                                     {% for com in communes %}
                                         <option value="{{ com.id }}">{{ com.commune }}</option>
@@ -92,16 +92,41 @@
                             <div class="group-btn">
                                 <button class="btn-search">Rechercher</button>
                             </div>
+                            <br>
                         </div>
                     </div>
+                    <br>
+                    <div class="row">
+                        <table  id="data" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th style="text-align: left">NOM</th>
+                                <th style="text-align: left">POSTNOM</th>
+                                <th style="text-align: left">PRENOM</th>
+                                <th style="text-align: left">TELEPHONE</th>
+                                <th style="text-align: left">EMAIL</th>
+                                <th style="text-align: left">ANNEE</th>
+                                <th style="text-align: left">INSTITUTION</th>
+                                <th style="text-align: left">UNIVERSITE</th>
+                                <th style="text-align: left">COMMUNE</th>
+                                <th style="text-align: left">STATUT</th>
+                            </tr>
+                            </thead>
+                            <tbody id="data-body">
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
             </div>
         </form>
     </div>
+{% endblock %}
+{% block scripts %}
     <script src="{{ asset('js/extention/choices.js') }}"></script>
     <script>
         const customSelects = document.querySelectorAll("select");
-        //const deleteBtn = document.getElementById('delete')
         const choices = new Choices('select',
             {
                 searchEnabled: false,
@@ -109,5 +134,62 @@
                 removeItemButton: true,
             });
     </script>
-{% endblock %}
+    <script src="{{ asset('js/router/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/select2/select2.min.js') }}"></script>
+    <script>
+        jQuery(document).ready(function () {
+            $(function ($) {
+                $(".js-states").select2();
+                $(".js-states-limit").select2({
+                    maximumSelectionLength: 2
+                });
+                $(".js-states-hide").select2({
+                    minimumResultsForSearch: Infinity
+                });
+            });
+            var dta = $("#data");
 
+            dta.hide();
+            const form = document.getElementById("form");
+            form.onsubmit = function (event) {
+                let formData = JSON.stringify($("#form").serializeArray());
+                let data = {recherche: formData};
+                var body = $('#data-body');
+                body.empty();
+                event.preventDefault();
+                //console.log(formData);
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ url('medecin_recherche') }}',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    processData: false,
+                    data: JSON.stringify(data),
+                    cache: false,
+                }).done(function (response) {
+                    console.log(response);
+                    for(let i = 0; i < response.length; i++){
+                        let row = `<tr>
+                                <td>${response[i].nom === undefined ? '-' : response[i].nom}</td>
+                                <td>${response[i].postnom === undefined ? '-' : response[i].postnom}</td>
+                                <td>${response[i].prenom === undefined ? '-' : response[i].prenom}</td>
+                                <td>${response[i].telephone === undefined ? '-' : response[i].telephone}</td>
+                                <td>${response[i].email === undefined ? '-' : response[i].email}</td>
+                                <td>${response[i].annee === undefined ? '-' : response[i].annee}</td>
+                                <td>${response[i].hopital === undefined ? '-' : response[i].hopital}</td>
+                                <td>${response[i].universite === undefined ? '-' : response[i].universite}</td>
+                                <td>${response[i].commune === undefined ? '-' : response[i].commune}</td>
+                                <td>${response[i].statut === undefined ? '-' : response[i].statut}</td>
+                           </tr>
+                        `;
+                        var html = $.parseHTML(row);
+                        console.log('ok');
+                        body.append(html);
+                    }
+                    dta.show();
+                });
+            }
+        });
+    </script>
+{% endblock %}
