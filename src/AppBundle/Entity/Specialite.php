@@ -90,6 +90,46 @@ class Specialite
     }
 
     /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Qualification", mappedBy="specialite")
+     */
+    private $qualifications;
+
+    /**
+     * @return mixed
+     */
+    public function getQualifications()
+    {
+        return $this->qualifications;
+    }
+
+    /**
+     * Add qualification.
+     *
+     * @param Qualification $qualification
+     *
+     * @return Specialite
+     */
+    public function addQualification(Qualification $qualification)
+    {
+        $this->$qualification[] = $qualification;
+
+        return $this;
+    }
+
+    /**
+     * Remove qualification.
+     *
+     * @param Qualification $qualification
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeQualification(Qualification $qualification)
+    {
+        return $this->qualifications->removeElement($this);
+    }
+
+    /**
      * Get medecin
      *
      * @return ArrayCollection
@@ -104,6 +144,7 @@ class Specialite
     public function __construct()
     {
         $this->medecin = new ArrayCollection();
+        $this->qualifications = new ArrayCollection();
     }
 
     /**

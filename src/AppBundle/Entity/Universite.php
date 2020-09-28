@@ -42,6 +42,12 @@ class Universite
     private $medecins;
 
     /**
+     *
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Qualification", mappedBy="universite")
+     */
+    private $qualifications;
+
+    /**
      * Get id
      *
      * @return int
@@ -110,6 +116,7 @@ class Universite
     public function __construct()
     {
         $this->medecins = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->qualifications = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -146,5 +153,31 @@ class Universite
     public function getMedecins()
     {
         return $this->medecins;
+    }
+
+    /**
+     * Add qualification.
+     *
+     * @param Qualification $qualification
+     *
+     * @return Universite
+     */
+    public function addQualification(Qualification $qualification)
+    {
+        $this->$qualification[] = $qualification;
+
+        return $this;
+    }
+
+    /**
+     * Remove qualification.
+     *
+     * @param Qualification $qualification
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeQualification(Qualification $qualification)
+    {
+        return $this->qualifications->removeElement($this);
     }
 }

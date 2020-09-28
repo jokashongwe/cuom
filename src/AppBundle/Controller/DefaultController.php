@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Medecin;
+use AppBundle\Entity\Qualification;
 use AppBundle\Entity\Specialite;
 use AppBundle\Repository\MedecinRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -36,19 +37,13 @@ class DefaultController extends Controller
         //$form = $this->createForm(new RechercheType());
        try{
            $em = $this->getDoctrine()->getManager();
-           $repos = $em->getRepository(Medecin::class);
            $content = json_decode($request->getContent(), true);
 
            $contentData = json_decode($content['recherche']);
            $result = array();
            foreach ($contentData as $item)
            {
-               if($item->value == '') continue;
-               if($item->name != 'specialite') {
-                   $dbResult = $this->parseMedecin($repos->recherchePar($item->name, $item->value));
-               } else {
-                   $dbResult = $em->getRepository(Specialite::class)->find($item->value)->getMedecin()->toArray();
-               }
+               $dbResult = $em->getRepository(Medecin::class)->rechercheAvecQualification($item->value);
                if(count($result) == 0) {
                    $result = array_merge($result, $dbResult);
                } else {
@@ -58,17 +53,47 @@ class DefaultController extends Controller
                }
            }
            $response = new JsonResponse();
-           return $response->setData(array_unique($result, SORT_REGULAR));
+           return $response->setData($this->parseMedecin(array_unique($result, SORT_REGULAR)));
        } catch (\Exception $e) {
            $response = new JsonResponse();
            return $response->setData($e->getMessage());
        }
     }
 
+    /**
+     * @param ArrayCollection $data
+     */
+    public function parseQual($data, $type=null) {
+        $result  = "";
+        foreach ($data as $item)
+        {
+            if($type !== null and $type ='universite')
+            {
+                $result .= " " . $item->getUniversite()->getNom();
+            } else
+            {
+                $result .= " " . $item->getSpecialite()->getSpecialite();
+            }
+
+        }
+        return $result;
+    }
+
+    /**
+     * @param Medecin[] $data
+     * @return array
+     */
     public function parseMedecin($data) {
         $items = array();
         foreach ($data as $item){
-            $items[]=array('id'=>$item->getId(),'nom'=>$item->getNom(),'photo'=>$item->getPhoto(),'postnom'=>$item->getPostnom(),'prenom'=>$item->getPrenom(),'hopital'=>$item->getHopital()->getNom(),'annee'=>$item->getAnnee());
+            $items[]=array('id'=>$item->getId(),'nom'=>$item->getNom(),'photo'=>$item->getPhoto(),
+                'postnom'=>$item->getPostnom(),'prenom'=>$item->getPrenom(),
+                'hopital'=>$item->getHopital()->getNom(),
+                'email' => $item->getEmail(),
+                'statut' => $item->getStatut()->getNom(),
+                'universite' => $this->parseQual($item->getQualifications(), 'universite'),
+                'telephone' => $item->getTelephone(),
+                'specialite'=>$this->parseQual($item->getQualifications()));
         }
         return $items;
     }
