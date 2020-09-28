@@ -19,16 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff8e1b27-93df-4ace-abe7-12efbfda30f1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Qualification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AppBundle/Repository/QualificationRepository.php" afterDir="false" />
+    <list default="true" id="ff8e1b27-93df-4ace-abe7-12efbfda30f1" name="Default Changelist" comment="Stabilisation de la recherche">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/default/search.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/default/search.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Medecin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Medecin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Specialite.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Specialite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Universite.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Universite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/MedecinRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/MedecinRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,8 +117,16 @@
       <workItem from="1601021523906" duration="4274000" />
       <workItem from="1601027510719" duration="2897000" />
       <workItem from="1601141314409" duration="10000" />
-      <workItem from="1601288462537" duration="560000" />
+      <workItem from="1601288462537" duration="1385000" />
     </task>
+    <task id="LOCAL-00001" summary="Stabilisation de la recherche">
+      <created>1601289069919</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1601289069919</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +146,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Stabilisation de la recherche" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stabilisation de la recherche" />
   </component>
   <component name="WindowStateProjectService">
     <state x="581" y="141" key="#com.intellij.ide.util.MemberChooser" timestamp="1601023627706">
@@ -156,10 +158,18 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1600.870@0.0.1600.870" timestamp="1600871795964" />
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2" timestamp="1601289128959">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="392" y="164" key="Vcs.Push.Dialog.v2/0.0.1600.870@0.0.1600.870" timestamp="1601289128959" />
     <state x="92" y="92" width="1416" height="686" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1600869555288">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="92" y="92" width="1416" height="686" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1600.870@0.0.1600.870" timestamp="1600869555288" />
+    <state x="603" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601289105729">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="603" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1600.870@0.0.1600.870" timestamp="1601289105729" />
     <state x="456" y="198" key="run.anything.popup" timestamp="1601029786361">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
