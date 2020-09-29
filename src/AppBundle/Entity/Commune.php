@@ -28,11 +28,11 @@ class Commune
      */
     private $commune;
 
-    /**
-     *
-     * @ORM\OneToMany(targetEntity="Medecin", mappedBy="Commune")
-     */
-    private $medecins;
+//    /**
+//     *
+//     * @ORM\OneToMany(targetEntity="Medecin", mappedBy="Commune")
+//     */
+//    private $medecins;
 
 
     /**
@@ -79,51 +79,51 @@ class Commune
      */
     public function __construct()
     {
-        $this->medecins = new \Doctrine\Common\Collections\ArrayCollection();
+       // $this->medecins = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Add medecin.
-     *
-     * @param \AppBundle\Entity\Medecin $medecin
-     *
-     * @return Commune
-     */
-    public function addMedecin(\AppBundle\Entity\Medecin $medecin)
-    {
-        $this->medecins[] = $medecin;
-
-        return $this;
-    }
-
-    /**
-     * Remove medecin.
-     *
-     * @param \AppBundle\Entity\Medecin $medecin
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeMedecin(\AppBundle\Entity\Medecin $medecin)
-    {
-        return $this->medecins->removeElement($medecin);
-    }
-
-    /**
-     * Get medecins.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMedecins()
-    {
-        return $this->medecins;
-    }
-
-    public function nbr()
-    {
-        $som=0;
-        foreach ($this->getMedecins() as $md){
-            $som++;
-        }
-        return $som;
-    }
+//    /**
+//     * Add medecin.
+//     *
+//     * @param \AppBundle\Entity\Medecin $medecin
+//     *
+//     * @return Commune
+//     */
+//    public function addMedecin(\AppBundle\Entity\Medecin $medecin)
+//    {
+//        $this->medecins[] = $medecin;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove medecin.
+//     *
+//     * @param \AppBundle\Entity\Medecin $medecin
+//     *
+//     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+//     */
+//    public function removeMedecin(\AppBundle\Entity\Medecin $medecin)
+//    {
+//        return $this->medecins->removeElement($medecin);
+//    }
+//
+//    /**
+//     * Get medecins.
+//     *
+//     * @return \Doctrine\Common\Collections\Collection
+//     */
+//    public function getMedecins()
+//    {
+//        return $this->medecins;
+//    }
+//
+//    public function nbr()
+//    {
+//        $som=0;
+//        foreach ($this->getMedecins() as $md){
+//            $som++;
+//        }
+//        return $som;
+//    }
 }

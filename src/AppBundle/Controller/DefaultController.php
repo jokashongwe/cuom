@@ -37,6 +37,7 @@ class DefaultController extends Controller
         //$form = $this->createForm(new RechercheType());
        try{
            $em = $this->getDoctrine()->getManager();
+
            $content = json_decode($request->getContent(), true);
 
            $contentData = json_decode($content['recherche']);

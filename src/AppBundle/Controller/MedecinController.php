@@ -42,7 +42,7 @@ class MedecinController extends Controller
             $em = $this->getDoctrine()->getManager();
             $file=$medecin->getPhoto();
             if($file != null){
-            $filename= $this->generateUniqueFileName().'.'.$file->guessExtension();
+            $filename= $medecin->getCnom().'.'.$file->guessExtension();
             $file->move(
                 $this->getParameter('photo_directory'),
                 $filename

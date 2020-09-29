@@ -78,11 +78,11 @@ class Specialite
     /**
      * Set medecin
      *
-     * @param \AppBundle\Entity\Medecin $medecin
+     * @param Medecin $medecin
      *
      * @return Specialite
      */
-    public function setMedecin(\AppBundle\Entity\Medecin $medecin = null)
+    public function setMedecin(Medecin $medecin = null)
     {
         $this->medecin = $medecin;
 
@@ -129,45 +129,45 @@ class Specialite
         return $this->qualifications->removeElement($this);
     }
 
-    /**
-     * Get medecin
-     *
-     * @return ArrayCollection
-     */
-    public function getMedecin()
-    {
-        return $this->medecin;
-    }
+//    /**
+//     * Get medecin
+//     *
+//     * @return ArrayCollection
+//     */
+//    public function getMedecin()
+//    {
+//        return $this->medecin;
+//    }
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->medecin = new ArrayCollection();
+        //$this->medecin = new ArrayCollection();
         $this->qualifications = new ArrayCollection();
     }
 
-    /**
-     * Add medecin
-     *
-     * @param \AppBundle\Entity\Medecin $medecin
-     *
-     * @return Specialite
-     */
-    public function addMedecin(\AppBundle\Entity\Medecin $medecin)
-    {
-        $this->medecin[] = $medecin;
-
-        return $this;
-    }
-
-    /**
-     * Remove medecin
-     *
-     * @param \AppBundle\Entity\Medecin $medecin
-     */
-    public function removeMedecin(\AppBundle\Entity\Medecin $medecin)
-    {
-        $this->medecin->removeElement($medecin);
-    }
+//    /**
+//     * Add medecin
+//     *
+//     * @param Medecin $medecin
+//     *
+//     * @return Specialite
+//     */
+//    public function addMedecin(Medecin $medecin)
+//    {
+//        $this->medecin[] = $medecin;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove medecin
+//     *
+//     * @param Medecin $medecin
+//     */
+//    public function removeMedecin(Medecin $medecin)
+//    {
+//        $this->medecin->removeElement($medecin);
+//    }
 }

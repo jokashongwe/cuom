@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
@@ -20,6 +21,29 @@ class Medecin
      */
     private $id;
 
+
+    /**
+     * @var string
+     * @ORM\Column(name="cnom", type="string", length=50, nullable=true)
+     */
+    private $cnom;
+
+    /**
+     * @return string
+     */
+    public function getCnom()
+    {
+        return $this->cnom;
+    }
+
+    /**
+     * @param string $cnom
+     */
+    public function setCnom($cnom)
+    {
+        $this->cnom = $cnom;
+    }
+
     /**
      * @var string
      * @ORM\Column(name="nom", type="string", length=50)
@@ -38,11 +62,11 @@ class Medecin
      */
     private $prenom;
 
-    /**
-     * @var int
-     * @ORM\Column(name="annee", type="integer")
-     */
-    private $annee;
+//    /**
+//     * @var int
+//     * @ORM\Column(name="annee", type="integer")
+//     */
+//    private $annee;
 
     /**
      * @var string
@@ -63,11 +87,11 @@ class Medecin
      */
     private $photo;
 
-    /**
-     *
-     * @ORM\ManyToMany(targetEntity="Specialite", mappedBy="medecin")
-     */
-    private $specialites;
+//    /**
+//     *
+//     * @ORM\ManyToMany(targetEntity="Specialite", mappedBy="medecin")
+//     */
+//    private $specialites;
 
     /**
      *
@@ -75,16 +99,16 @@ class Medecin
      */
     private $hopital;
 
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="Universite", cascade={"persist"}, inversedBy="medecins")
-     */
-    private $universite;
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="Commune", cascade={"persist"}, inversedBy="medecins")
-     */
-    private $Commune;
+//    /**
+//     *
+//     * @ORM\ManyToOne(targetEntity="Universite", cascade={"persist"}, inversedBy="medecins")
+//     */
+//    private $universite;
+//    /**
+//     *
+//     * @ORM\ManyToOne(targetEntity="Commune", cascade={"persist"}, inversedBy="medecins")
+//     */
+//    private $Commune;
 
     /**
      *
@@ -183,29 +207,29 @@ class Medecin
         return $this->prenom;
     }
 
-    /**
-     * Set annee
-     *
-     * @param integer $annee
-     *
-     * @return Medecin
-     */
-    public function setAnnee($annee)
-    {
-        $this->annee = $annee;
-
-        return $this;
-    }
-
-    /**
-     * Get annee
-     *
-     * @return int
-     */
-    public function getAnnee()
-    {
-        return $this->annee;
-    }
+//    /**
+//     * Set annee
+//     *
+//     * @param integer $annee
+//     *
+//     * @return Medecin
+//     */
+//    public function setAnnee($annee)
+//    {
+//        $this->annee = $annee;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get annee
+//     *
+//     * @return int
+//     */
+//    public function getAnnee()
+//    {
+//        return $this->annee;
+//    }
 
     /**
      * Set telephone
@@ -287,53 +311,53 @@ class Medecin
      */
     public function __construct()
     {
-        $this->specialites = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->qualifications = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->specialites = new ArrayCollection();
+        $this->qualifications = new ArrayCollection();
     }
 
-    /**
-     * Add specialite
-     *
-     * @param \AppBundle\Entity\Specialite $specialite
-     *
-     * @return Medecin
-     */
-    public function addSpecialite(\AppBundle\Entity\Specialite $specialite)
-    {
-        $this->specialites[] = $specialite;
-        $specialite->setMedecin($this);
-
-        return $this;
-    }
-
-    /**
-     * Remove specialite
-     *
-     * @param \AppBundle\Entity\Specialite $specialite
-     */
-    public function removeSpecialite(\AppBundle\Entity\Specialite $specialite)
-    {
-        $this->specialites->removeElement($specialite);
-    }
-
-    /**
-     * Get specialites
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSpecialites()
-    {
-        return $this->specialites;
-    }
+//    /**
+//     * Add specialite
+//     *
+//     * @param \AppBundle\Entity\Specialite $specialite
+//     *
+//     * @return Medecin
+//     */
+//    public function addSpecialite(\AppBundle\Entity\Specialite $specialite)
+//    {
+//        $this->specialites[] = $specialite;
+//        $specialite->setMedecin($this);
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove specialite
+//     *
+//     * @param \AppBundle\Entity\Specialite $specialite
+//     */
+//    public function removeSpecialite(\AppBundle\Entity\Specialite $specialite)
+//    {
+//        $this->specialites->removeElement($specialite);
+//    }
+//
+//    /**
+//     * Get specialites
+//     *
+//     * @return \Doctrine\Common\Collections\Collection
+//     */
+//    public function getSpecialites()
+//    {
+//        return $this->specialites;
+//    }
 
     /**
      * Set hopital
      *
-     * @param \AppBundle\Entity\Hopital $hopital
+     * @param Hopital $hopital
      *
      * @return Medecin
      */
-    public function setHopital(\AppBundle\Entity\Hopital $hopital = null)
+    public function setHopital(Hopital $hopital = null)
     {
         $this->hopital = $hopital;
 
@@ -343,68 +367,68 @@ class Medecin
     /**
      * Get hopital
      *
-     * @return \AppBundle\Entity\Hopital
+     * @return Hopital
      */
     public function getHopital()
     {
         return $this->hopital;
     }
+//
+//    /**
+//     * Set universite
+//     *
+//     * @param \AppBundle\Entity\Universite $universite
+//     *
+//     * @return Medecin
+//     */
+//    public function setUniversite(\AppBundle\Entity\Universite $universite = null)
+//    {
+//        $this->universite = $universite;
+//
+//        return $this;
+//    }
 
     /**
-     * Set universite
-     *
-     * @param \AppBundle\Entity\Universite $universite
-     *
-     * @return Medecin
-     */
-    public function setUniversite(\AppBundle\Entity\Universite $universite = null)
-    {
-        $this->universite = $universite;
-
-        return $this;
-    }
-
-    /**
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return ArrayCollection
      */
     public function getQualifications()
     {
         return $this->qualifications;
     }
 
-    /**
-     * Get universite
-     *
-     * @return \AppBundle\Entity\Universite
-     */
-    public function getUniversite()
-    {
-        return $this->universite;
-    }
+//    /**
+//     * Get universite
+//     *
+//     * @return Universite
+//     */
+//    public function getUniversite()
+//    {
+//        return $this->universite;
+//    }
 
-    /**
-     * Set commune
-     *
-     * @param \AppBundle\Entity\Commune $commune
-     *
-     * @return Medecin
-     */
-    public function setCommune(\AppBundle\Entity\Commune $commune = null)
-    {
-        $this->Commune = $commune;
-
-        return $this;
-    }
-
-    /**
-     * Get commune
-     *
-     * @return \AppBundle\Entity\Commune
-     */
-    public function getCommune()
-    {
-        return $this->Commune;
-    }
+//    /**
+//     * Set commune
+//     *
+//     * @param \AppBundle\Entity\Commune $commune
+//     *
+//     * @return Medecin
+//     */
+//    public function setCommune(\AppBundle\Entity\Commune $commune = null)
+//    {
+//        $this->Commune = $commune;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get commune
+//     *
+//     * @return \AppBundle\Entity\Commune
+//     */
+//    public function getCommune()
+//    {
+//        return $this->Commune;
+//    }
 
     /**
      * Set Statut

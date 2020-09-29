@@ -35,11 +35,11 @@ class Universite
      */
     private $adresse;
 
-    /**
-     *
-     * @ORM\OneToMany(targetEntity="Medecin", mappedBy="universite")
-     */
-    private $medecins;
+//    /**
+//     *
+//     * @ORM\OneToMany(targetEntity="Medecin", mappedBy="universite")
+//     */
+//    private $medecins;
 
     /**
      *
@@ -115,45 +115,45 @@ class Universite
      */
     public function __construct()
     {
-        $this->medecins = new \Doctrine\Common\Collections\ArrayCollection();
+        //$this->medecins = new \Doctrine\Common\Collections\ArrayCollection();
         $this->qualifications = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Add medecin.
-     *
-     * @param \AppBundle\Entity\Medecin $medecin
-     *
-     * @return Universite
-     */
-    public function addMedecin(\AppBundle\Entity\Medecin $medecin)
-    {
-        $this->medecins[] = $medecin;
-
-        return $this;
-    }
-
-    /**
-     * Remove medecin.
-     *
-     * @param \AppBundle\Entity\Medecin $medecin
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeMedecin(\AppBundle\Entity\Medecin $medecin)
-    {
-        return $this->medecins->removeElement($medecin);
-    }
-
-    /**
-     * Get medecins.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMedecins()
-    {
-        return $this->medecins;
-    }
+//    /**
+//     * Add medecin.
+//     *
+//     * @param \AppBundle\Entity\Medecin $medecin
+//     *
+//     * @return Universite
+//     */
+//    public function addMedecin(\AppBundle\Entity\Medecin $medecin)
+//    {
+//        $this->medecins[] = $medecin;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove medecin.
+//     *
+//     * @param \AppBundle\Entity\Medecin $medecin
+//     *
+//     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+//     */
+//    public function removeMedecin(\AppBundle\Entity\Medecin $medecin)
+//    {
+//        return $this->medecins->removeElement($medecin);
+//    }
+//
+//    /**
+//     * Get medecins.
+//     *
+//     * @return \Doctrine\Common\Collections\Collection
+//     */
+//    public function getMedecins()
+//    {
+//        return $this->medecins;
+//    }
 
     /**
      * Add qualification.
