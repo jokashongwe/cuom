@@ -97,7 +97,7 @@
                     </div>
                     <br>
                     <div class="row">
-                        <table  id="data" style="width:100%">
+                        <table id="data" style="width:100%">
                             <thead>
                             <tr>
                                 <th style="text-align: left">NOM</th>
@@ -108,7 +108,7 @@
                                 <th style="text-align: left">SPECIALITES</th>
                                 <th style="text-align: left">INSTITUTION</th>
                                 <th style="text-align: left">UNIVERSITE</th>
-                                <th style="text-align: left">STATUT</th>
+                                <th style="text-align: left"></th>
                             </tr>
                             </thead>
                             <tbody id="data-body">
@@ -147,14 +147,15 @@
                     minimumResultsForSearch: Infinity
                 });
             });
-            var dta = $("#data");
+
+            let dta = $("#data");
 
             dta.hide();
             const form = document.getElementById("form");
             form.onsubmit = function (event) {
                 let formData = JSON.stringify($("#form").serializeArray());
                 let data = {recherche: formData};
-                var body = $('#data-body');
+                let body = $('#data-body');
                 body.empty();
                 event.preventDefault();
                 //console.log(formData);
@@ -167,8 +168,8 @@
                     data: JSON.stringify(data),
                     cache: false,
                 }).done(function (response) {
-                    console.log(response);
-                    for(let i = 0; i < response.length; i++){
+                    //console.log(response);
+                    for (let i = 0; i < response.length; i++) {
                         let row = `<tr>
                                 <td>${response[i].nom === undefined ? '-' : response[i].nom}</td>
                                 <td>${response[i].postnom === undefined ? '-' : response[i].postnom}</td>
@@ -178,11 +179,11 @@
                                 <td>${response[i].specialite === undefined ? '-' : response[i].specialite}</td>
                                 <td>${response[i].hopital === undefined ? '-' : response[i].hopital}</td>
                                 <td>${response[i].universite === undefined ? '-' : response[i].universite}</td>
-                                <td>${response[i].statut === undefined ? '-' : response[i].statut}</td>
+                                <td><a href="/medecin/${response[i].id}/show" class="btn btn-info"><i class="fa fa-eye"></i></a><br></td>
                            </tr>
+
                         `;
-                        var html = $.parseHTML(row);
-                        console.log('ok');
+                        let html = $.parseHTML(row);
                         body.append(html);
                     }
                     dta.show();

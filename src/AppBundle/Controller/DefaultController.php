@@ -3,11 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Medecin;
-use AppBundle\Entity\Qualification;
-use AppBundle\Entity\Specialite;
-use AppBundle\Repository\MedecinRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -32,6 +28,36 @@ class DefaultController extends Controller
             'universites' => $universites, 'hopitaux' => $hopitaux, 'specialites' => $specialites, 'communes' => $communes, 'statuts' => $statuts]);
     }
 
+    private function getMedecinFromQualificationArray($qualifications){
+        $medecins = new  ArrayCollection();
+        foreach ($qualifications as $qualification)
+        {
+            $medecins->add($qualification->getMedecin());
+        }
+        return $medecins->toArray();
+    }
+
+    private function contains($array, $element)
+    {
+        foreach ($array as $item)
+        {
+            if($item->getId() == $element->getId()) return true;
+        }
+        return false;
+    }
+
+
+    private function uniqueArray($array)
+    {
+        $items = array();
+        foreach ($array as $item)
+        {
+            if($this->contains($items, $item)) continue;
+            $items = array_merge($items, [$item]);
+        }
+        return $items;
+    }
+
     public function rechercheTraitementAction(Request $request)
     {
         //$form = $this->createForm(new RechercheType());
@@ -42,22 +68,44 @@ class DefaultController extends Controller
 
            $contentData = json_decode($content['recherche']);
            $result = array();
+           $dbResult = array();
            foreach ($contentData as $item)
            {
-               $dbResult = $em->getRepository(Medecin::class)->rechercheAvecQualification($item->value);
-               if(count($result) == 0) {
+               if($item->value == "") continue;
+               $name = strtolower($item->name);
+               if($name == "universite" or $name == "specialite")
+               {
+                   $obj = $em->getRepository('AppBundle:'. ucfirst($item->name))->find($item->value);
+                   if($obj !== null){
+                       $dbResult = array_merge($dbResult, $this->getMedecinFromQualificationArray($obj->getQualifications()));
+                   }
+               } else if($name == "hopital" or $name == "statut") {
+                   $obj = $em->getRepository(Medecin::class)->recherchePar($item);
+
+                   if($obj !== null){
+                       $dbResult = array_merge($dbResult, $obj);
+                   }
+               } else if($name == "nom") {
+                   $medecins = $em->getRepository(Medecin::class)->recherche($item->value);
+                   $dbResult = array_merge($dbResult, $medecins);
+               }
+
+               if(count($result) == 0 && count($dbResult) !== 0) {
                    $result = array_merge($result, $dbResult);
-               } else {
-                   $result = array_uintersect($dbResult, $result, function($a, $b) {
-                       return $a == $b;
-                   });
+               } else{
+                   if(count($dbResult) !== 0) {
+                       $result = array_uintersect($dbResult, $result, function($a, $b) {
+                           return $a !== $b;
+                       });
+                   }
                }
            }
            $response = new JsonResponse();
-           return $response->setData($this->parseMedecin(array_unique($result, SORT_REGULAR)));
+           return $response->setData($this->parseMedecin($this->uniqueArray($result)));
        } catch (\Exception $e) {
            $response = new JsonResponse();
-           return $response->setData($e->getMessage());
+           die(var_dump($e->getMessage()));
+           return $response->setData([]);
        }
     }
 
@@ -86,6 +134,8 @@ class DefaultController extends Controller
      */
     public function parseMedecin($data) {
         $items = array();
+        $iter = 0;
+
         foreach ($data as $item){
             $items[]=array('id'=>$item->getId(),'nom'=>$item->getNom(),'photo'=>$item->getPhoto(),
                 'postnom'=>$item->getPostnom(),'prenom'=>$item->getPrenom(),
@@ -95,7 +145,10 @@ class DefaultController extends Controller
                 'universite' => $this->parseQual($item->getQualifications(), 'universite'),
                 'telephone' => $item->getTelephone(),
                 'specialite'=>$this->parseQual($item->getQualifications()));
+            $iter++;
         }
+
+
         return $items;
     }
 

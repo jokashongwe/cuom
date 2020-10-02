@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CNOM - Annuaire des médécins</title>
+    {% block stylesheets %}
+        <!-- ========== COMMON STYLES ========== -->
+        <meta property="og:image" content="{{ asset('images/logo-arm.png') }}" />
+        <link rel="shortcut icon" href="{{ asset('images/logo-arm.png') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" media="screen" >
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" media="screen" >
+        <link rel="stylesheet" href="{{ asset('css/animate-css/animate.min.css') }}" media="screen" >
+        <link rel="stylesheet" href="{{ asset('css/lobipanel/lobipanel.min.css') }}" media="screen" >
+
+        <!-- ========== PAGE STYLES ========== -->
+        <link rel="stylesheet" href="{{ asset('css/prism/prism.css') }}" media="screen" > <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
+        <link rel="stylesheet" href="{{ asset('css/icheck/skins/line/blue.css') }}" >
+        <link rel="stylesheet" href="{{ asset('css/icheck/skins/line/red.css') }}" >
+        <link rel="stylesheet" href="{{ asset('css/icheck/skins/line/green.css') }}" >
+
+        <!-- ========== THEME CSS ========== -->
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}" media="screen" >
+    {% endblock %}
+    <!-- ========== MODERNIZR ========== -->
+    <script src="{{ asset('js/modernizr/modernizr.min.js') }}"></script>
+</head>
+<body>
+<div class="main-wrapper">
+    <div class="content-wrapper">
+        <div class="content-container">
+
+            <div class="main-page">
+                <section class="section">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12" style="min-height: 900px;">
+                                {% block body %}
+                                {% endblock %}
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </section>
+            </div>
+        </div>
+        <!-- /.content-container -->
+    </div>
+    <!-- /.content-wrapper -->
+
+</div>
+<!-- /.main-wrapper -->
+{% block javascripts %}
+    <!-- ========== COMMON JS FILES ========== -->
+    <script src="{{ asset('js/jquery/jquery-2.2.4.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/pace/pace.min.js') }}"></script>
+    <script src="{{ asset('js/lobipanel/lobipanel.min.js') }}"></script>
+    <script src="{{ asset('js/iscroll/iscroll.js') }}"></script>
+
+    <script src="{{ asset('js/prism/prism.js') }}"></script>
+
+    <!-- ========== THEME JS ========== -->
+    <script src="{{ asset('js/main.js') }}"></script>
+{% endblock %}
+<!-- ========== ADD custom.js') }} FILE BELOW WITH YOUR CHANGES ========== -->
+</body>
+
+</html>

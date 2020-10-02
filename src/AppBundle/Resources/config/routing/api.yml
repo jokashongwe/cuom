@@ -1,0 +1,49 @@
+api_specialite:
+    path:     /specialites/
+    defaults: { _controller: "AppBundle:Api:getSpecialite" }
+    methods:  GET
+
+api_specialite_by_id:
+    path:     /specialites/{id}
+    defaults: { _controller: "AppBundle:Api:getSpecialiteById" }
+    methods:  GET
+
+api_universite:
+    path:     /universites/
+    defaults: { _controller: "AppBundle:Api:getUniversite" }
+    methods:  GET
+
+api_universite_by_id:
+    path:     /universites/{id}
+    defaults: { _controller: "AppBundle:Api:getUniversiteById" }
+    methods:  GET
+
+api_statut:
+    path:     /statuts/
+    defaults: { _controller: "AppBundle:Api:getStatut" }
+    methods:  GET
+
+api_statut_by_id:
+    path:     /statuts/{id}
+    defaults: { _controller: "AppBundle:Api:getStatutById" }
+    methods:  GET
+
+api_medecin_by_id:
+    path:     /medecins/{id}
+    defaults: { _controller: "AppBundle:Api:getMedecinById" }
+    methods:  GET
+
+api_hopitals_by_id:
+    path:     /hopitals/{id}
+    defaults: { _controller: "AppBundle:Api:getHopitalById" }
+    methods:  GET
+
+api_recherche_medecins:
+    path:     /medecins/search/{mot}
+    defaults: { _controller: "AppBundle:Api:rechercheMedecin" }
+    methods:  GET
+
+api_recherche_medecins_par_specialite:
+    path:     /medecins/search/specialites/{id}
+    defaults: { _controller: "AppBundle:Api:rechercheMedecinBySpecialite" }
+    methods:  GET

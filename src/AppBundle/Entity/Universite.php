@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +47,14 @@ class Universite
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Qualification", mappedBy="universite")
      */
     private $qualifications;
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getQualifications()
+    {
+        return $this->qualifications;
+    }
 
     /**
      * Get id
@@ -116,7 +125,7 @@ class Universite
     public function __construct()
     {
         //$this->medecins = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->qualifications = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->qualifications = new ArrayCollection();
     }
 
 //    /**

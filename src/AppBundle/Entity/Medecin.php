@@ -149,6 +149,11 @@ class Medecin
         return $this;
     }
 
+    public function getLastQualification()
+    {
+        return $this->qualifications->last();
+    }
+
     /**
      * Get nom
      *

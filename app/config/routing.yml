@@ -8,6 +8,10 @@ app_hopital:
     resource: "@AppBundle/Resources/config/routing/hopital.yml"
     prefix:   /hopital
 
+app_api:
+    resource: "@AppBundle/Resources/config/routing/api.yml"
+    prefix: /api
+
 app_universite:
     resource: "@AppBundle/Resources/config/routing/universite.yml"
     prefix:   /universite
