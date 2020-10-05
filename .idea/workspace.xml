@@ -20,178 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff8e1b27-93df-4ace-abe7-12efbfda30f1" name="Default Changelist" comment="Stabilisation de la recherche">
-      <change afterPath="$PROJECT_DIR$/app/Resources/views/medecin_show.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ApiController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AppBundle/Entity/ApiToken.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AppBundle/Repository/ApiTokenRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AppBundle/Resources/config/routing/api.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/0044.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/0138.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/0260.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/0363.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/0370.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/0457.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/0508.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/0595.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/0698.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/0929.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/0980.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/0989.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10.348.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10.582.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10.851.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10.999.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10004.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/1001.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10236.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10264.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10283.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10285.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10346.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10467.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10654.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10790.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10865.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10867.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10980.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10994.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/10996.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/11.712.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/11.809.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/11210.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/11416.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/11800.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/11810.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/12.248.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/12.418.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/12.797.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/1210.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/12197.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/12209.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/1221.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/12227.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/12338.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/12470.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/12479.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/1252.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/12829.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/13.170.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/13.217.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/13.235.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/13.321.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/13.601.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/13281.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/13420.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/13603.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/13612.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/13734.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/13895.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/13951.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/14.429.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/14003.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/14212.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/14312.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/14337.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/1440.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/14439.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/14713.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/14723.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/14797.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/14854.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/14861.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/1494.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/15.492.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/15604.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/15652.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/1574.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/15772.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/16.668.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/16505.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/16678.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/16931.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/17060.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/17149.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/1789.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/18.479.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/18014.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/18894.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/19.442.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/1934.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/1938.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/2055.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/2618.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/2622.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/2728.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/2740.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/2813.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/2967.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/3183.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/3556.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/3702.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/3820.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/4245.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/4526.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/4557.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/4861.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/4872.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/4892.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/4904.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/4963.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/5072.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/5132.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/5185.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/5186.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/5237.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/5266.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/5281.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/5370.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/5381.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/5415.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/5816.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/5927.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/6440.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/6452.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/6454.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/6509.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/6708.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/6793.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/6820.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7002.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7113.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7278.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7361.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7500.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7560.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7569.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7673.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7726.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7820.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7848.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7876.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/7926.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/8159.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/8165.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/8309.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/8452.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/8618.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/8622.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/8768.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/8901.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/8957.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/9012.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/9139.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/9255.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/uploads/photos_medecins/9806.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/default/search.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/default/search.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/medecin/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/medecin/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/search_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/search_base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/routing.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Hopital.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Hopital.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Medecin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Medecin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Universite.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Universite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Repository/MedecinRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Repository/MedecinRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ApiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Specialite.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Specialite.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,7 +134,11 @@
       <workItem from="1601533004578" duration="5010000" />
       <workItem from="1601549791939" duration="1023000" />
       <workItem from="1601550994075" duration="351000" />
-      <workItem from="1601632299228" duration="6612000" />
+      <workItem from="1601632299228" duration="7179000" />
+      <workItem from="1601640157539" duration="516000" />
+      <workItem from="1601642624490" duration="263000" />
+      <workItem from="1601703049476" duration="4028000" />
+      <workItem from="1601883354719" duration="72000" />
     </task>
     <task id="LOCAL-00001" summary="Stabilisation de la recherche">
       <created>1601289069919</created>
@@ -371,9 +206,9 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="456" y="198" key="run.anything.popup/0.0.1600.870@0.0.1600.870" timestamp="1601377695498" />
-    <state x="463" y="182" width="672" height="678" key="search.everywhere.popup" timestamp="1601634873717">
+    <state x="463" y="182" width="672" height="678" key="search.everywhere.popup" timestamp="1601703130616">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="463" y="182" width="672" height="678" key="search.everywhere.popup/0.0.1600.870@0.0.1600.870" timestamp="1601634873717" />
+    <state x="463" y="182" width="672" height="678" key="search.everywhere.popup/0.0.1600.870@0.0.1600.870" timestamp="1601703130616" />
   </component>
 </project>

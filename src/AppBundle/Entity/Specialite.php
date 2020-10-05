@@ -118,6 +118,14 @@ class Specialite
     }
 
     /**
+     * @return int
+     */
+    public function getNombreMedecin()
+    {
+        return count($this->qualifications);
+    }
+
+    /**
      * Remove qualification.
      *
      * @param Qualification $qualification

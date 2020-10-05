@@ -139,7 +139,8 @@ class ApiController extends Controller
         foreach ($array as $item) {
             $items[] = array(
                 'id' => $item->getId(),
-                'nom' => $item->getSpecialite()
+                'nom' => $item->getSpecialite(),
+                'nbr' => $item->getNombreMedecin()
             );
         }
         return $items;
@@ -172,6 +173,7 @@ class ApiController extends Controller
         $items = array();
         foreach ($array as $item) {
             $items[] = array(
+                'id' => $item->getId(),
                 'cnom' => $item->getCnom(),
                 'nom' => $item->getNom(),
                 'postnom' => $item->getPostnom(),
