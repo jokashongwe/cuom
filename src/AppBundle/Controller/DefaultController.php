@@ -75,10 +75,13 @@ class DefaultController extends Controller
                $name = strtolower($item->name);
                if($name == "universite" or $name == "specialite")
                {
-                   $obj = $em->getRepository('AppBundle:'. ucfirst($item->name))->find($item->value);
-                   if($obj !== null){
-                       $dbResult = array_merge($dbResult, $this->getMedecinFromQualificationArray($obj->getQualifications()));
+                   $qualifications = $em->getRepository('AppBundle:Qualification')->rechercherMedecinParSpecialite($item->value);
+                   $medecins = new ArrayCollection();
+                   foreach ($qualifications as $qualification)
+                   {
+                       $medecins->add($qualification->getMedecin());
                    }
+                   $dbResult = array_merge($dbResult, $medecins->toArray());
                } else if($name == "hopital" or $name == "statut") {
                    $obj = $em->getRepository(Medecin::class)->recherchePar($item);
 
@@ -103,9 +106,9 @@ class DefaultController extends Controller
            $response = new JsonResponse();
            return $response->setData($this->parseMedecin($this->uniqueArray($result)));
        } catch (\Exception $e) {
-           $response = new JsonResponse();
+           //$response = new JsonResponse();
            die(var_dump($e->getMessage()));
-           return $response->setData([]);
+           //return $response->setData([]);
        }
     }
 

@@ -24,4 +24,27 @@ class QualificationRepository extends \Doctrine\ORM\EntityRepository
         ;
         return $tr->getQuery()->getResult();
     }
+
+    public function rechercherMedecinParSpecialite($id){
+        $tr = $this->createQueryBuilder('q');
+        // modification pour satisfaire la condition du cas de la spécialité de médecine interne
+        // voir Joelle Kalombo 12.10.2020
+        // spécialité médecine interne id = 6
+        // Endocrinologie = 4, Pneumologie = 25, Cardiologie = 24, Gastro = 26, Neuprho = 27, Rhumato = 28
+        if($id == '6'){
+            $tr->select('q')
+                ->join('q.specialite', 's')
+                ->where('s.id = 6 OR s.id = 4 OR s.id = 25 OR s.id = 24 OR s.id = 26 OR s.id = 27 OR s.id = 28')
+                ->orderBy('q.annee', 'DESC')
+            ;
+        } else {
+            $tr->select('q')
+                ->join('q.specialite', 's')
+                ->where('s.id = :id')
+                ->setParameter('id', $id)
+                ->orderBy('q.annee', 'DESC')
+            ;
+        }
+        return $tr->getQuery()->getResult();
+    }
 }

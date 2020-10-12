@@ -4,6 +4,7 @@
 namespace AppBundle\Controller;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -121,8 +122,12 @@ class ApiController extends Controller
     public  function rechercheMedecinBySpecialiteAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $item = (object) array('name' => 'specialite', 'value' => $id);
-        $medecins = $em->getRepository('AppBundle:Medecin')->rechercheParSpecialite($item);
+        $qualifications = $em->getRepository('AppBundle:Qualification')->rechercherMedecinParSpecialite($id);
+        $medecins = new ArrayCollection();
+        foreach ($qualifications as $qualification)
+        {
+            $medecins->add($qualification->getMedecin());
+        }
         $jsonData = $this->arrayMedecinToJson($medecins, $request->getHttpHost());
         $json = new JsonResponse();
         return $json->setData([
@@ -172,6 +177,7 @@ class ApiController extends Controller
     {
         $items = array();
         foreach ($array as $item) {
+            $qual = $item->getLastQualification();
             $items[] = array(
                 'id' => $item->getId(),
                 'cnom' => $item->getCnom(),
@@ -180,9 +186,11 @@ class ApiController extends Controller
                 'prenom' => $item->getPrenom(),
                 'image' => $uri . '/uploads/photos_medecins/' . $item->getPhoto(),
                 'phone' => $item->getTelephone(),
-                'anneeDiplome' => $item->getLastQualification()->getAnnee(),
+                'specialite' => $qual->getSpecialite()->getSpecialite(),
+                'universite' => $qual->getUniversite()->getNom(),
+                'anneeDiplome' => $qual->getAnnee(),
                 'email' => $item->getEmail(),
-                'institution' => 'http://'.$uri .'/api/hopitals/' . $item->getHopital()->getId(),
+                'institution' => $item->getHopital()->getNom(),
             );
         }
         return $items;
